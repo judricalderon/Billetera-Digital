@@ -1,2 +1,2 @@
 # Billetera-Digital
-Proyecto creado para fines educativos persoanles
+Proyecto creado para fines educativos personales
