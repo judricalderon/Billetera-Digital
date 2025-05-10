@@ -1,5 +1,5 @@
 HELP.md
-
+.idea
 # Carpetas de compilación
 target/
 build/
@@ -46,3 +46,8 @@ out/
 # Archivos del sistema operativo
 .DS_Store
 Thumbs.db
+application.properties
+
+backend/src/main/resources/application.properties
+.resources/application.properties
+src/main/resources/application.properties
