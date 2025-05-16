@@ -19,7 +19,7 @@ export const ViewCards = ({ isOpen, user }) => {
   }, [isOpen, user]);
 
   const startEdit = (card) => {
-    if (card.estado !== "ACTIVO") return;
+    if (card.estado !== "Activo") return;
     setEditingId(card.idTarjeta);
     setNewCupo(card.cupoDisponible);
     setError("");
@@ -53,7 +53,7 @@ export const ViewCards = ({ isOpen, user }) => {
 
     var newCard = {
       ...card,
-      estado: "INACTIVO",
+      estado: "Inactivo",
     };
 
     await inactivateCard(newCard);
@@ -64,8 +64,8 @@ export const ViewCards = ({ isOpen, user }) => {
 
   // Activos primero, luego inactivos
   const sorted = [...cards].sort((a, b) => {
-    if (a.estado === "ACTIVO" && b.estado !== "ACTIVO") return -1;
-    if (a.estado !== "ACTIVO" && b.estado === "ACTIVO") return 1;
+    if (a.estado === "Activo" && b.estado !== "ACTActivoIVO") return -1;
+    if (a.estado !== "Activo" && b.estado === "Activo") return 1;
     return 0;
   });
 
@@ -76,7 +76,7 @@ export const ViewCards = ({ isOpen, user }) => {
           <div
             key={card.idTarjeta}
             className={`card-item ${
-              card.estado !== "ACTIVO" ? "inactive" : ""
+              card.estado !== "Activo" ? "inactive" : ""
             } `}
           >
             {editingId === card.idTarjeta ? (
@@ -113,11 +113,11 @@ export const ViewCards = ({ isOpen, user }) => {
                   <strong>Cupo Utilizado</strong>: {card.cupoUtilizado}
                 </p>
 
-                {card.estado === "INACTIVO" && (
+                {card.estado === "Inactivo" && (
                   <p className="inactive-text">Tarjeta inactiva</p>
                 )}
 
-                {card.estado === "ACTIVO" && (
+                {card.estado === "Activo" && (
                   <div className="card-button-container">
                     <button
                       onClick={() => startEdit(card)}
