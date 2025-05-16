@@ -1,0 +1,18 @@
+[
+  {
+    "idCliente": "1",
+    "identificacion": "1020304050",
+    "nombreCompleto": "Juan Pérez",
+    "correo": "juan.perez@example.com",
+    "estado": "Activo",
+    "fechaRegistro": "2025-05-10T12:34:56.000Z"
+  },
+  {
+    "idCliente": "2",
+    "identificacion": "2030405060",
+    "nombreCompleto": "María García",
+    "correo": "maria.garcia@example.com",
+    "estado": "Activo",
+    "fechaRegistro": "2025-05-11T08:15:30.000Z"
+  }
+]
