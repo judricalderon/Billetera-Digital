@@ -190,7 +190,7 @@ footer.footer {
   width: 100%;
 }
 
-.modal-body .card-form input {
+.modal-body input {
   display: block;
   width: 60%;
   padding: 0.5rem;
@@ -247,7 +247,66 @@ footer.footer {
 
 .modal-body .card-item {
   flex: 1 1 45%;
-  background: #f0f4f8;
+  background: #dbeaf9;
   padding: 1rem;
   border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modal-body .inactive {
+  background: #c9c9c9;
+  cursor: not-allowed;
+}
+
+.modal-body .card-item:hover {
+  opacity: 0.8;
+}
+
+.modal-body .card-button-container {
+  margin-top: 1rem;
+}
+
+.modal-body button {
+  padding: 5px 10px;
+  margin-right: 1rem;
+  border-radius: 4px;
+  font-size: .9rem;
+  background-color: #efeeec;
+  border: 2px solid #727272;
+  color: #727272;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.modal-body .edit-buttons button {
+  padding: 5px 10px;
+  margin-right: 1rem;
+  border-radius: 4px;
+  font-size: .9rem;
+  background-color: #cfe1f8;
+  border: 2px solid #2c72c3;
+  color: #2c72c3;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modal-body .edit-buttons button:hover {
+  background-color: #aec9ee;
+}
+
+.modal-body .card-form .buttons-container button:hover {
+  opacity: 0.8;
+}
+
+.modal-body .cards-list input { 
+  width: 100% !important;
+}
+
+.modal-body .inactive-text {
+  color: #727272;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  text-align: center;
 }

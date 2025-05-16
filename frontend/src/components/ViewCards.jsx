@@ -2,8 +2,13 @@ import { useContext, useEffect, useState } from "react";
 import { CardContext } from "../context/CardContext";
 
 export const ViewCards = ({ isOpen, user }) => {
-  const { cards, loadCards } = useContext(CardContext);
-  const [ isLoading, setIsLoading ] = useState(true);
+  const { cards, loadCards, updateCard, inactivateCard } =
+    useContext(CardContext);
+
+  const [isLoading, setIsLoading] = useState(true);
+  const [editingId, setEditingId] = useState(null);
+  const [newCupo, setNewCupo] = useState("");
+  const [error, setError] = useState("");
 
   useEffect(() => {
     if (isOpen) {
@@ -13,27 +18,121 @@ export const ViewCards = ({ isOpen, user }) => {
     }
   }, [isOpen, user]);
 
-  if (isLoading) {
-    console.log("Hola")
-    return <p>Cargando tarjetas...</p>;
-  }
+  const startEdit = (card) => {
+    if (card.estado !== "ACTIVO") return;
+    setEditingId(card.idTarjeta);
+    setNewCupo(card.cupoDisponible);
+    setError("");
+  };
 
-  if (!cards || cards.length === 0) {
-    console.log("Hola 2")
-    return <p>No hay tarjetas disponibles.</p>;
-  }
+  const cancelEdit = () => {
+    setEditingId(null);
+    setError("");
+  };
+
+  const saveEdit = async () => {
+    const card = cards.find((c) => c.idTarjeta === editingId);
+    const val = Number(newCupo);
+
+    if (isNaN(val) || val < 0 || val > card.cupoTotal) {
+      setError(`El cupo debe estar entre 0 y ${card.cupoTotal}`);
+      return;
+    }
+
+    var newCard = {
+      ...card,
+      cupoDisponible: val,
+    };
+
+    await updateCard(newCard);
+    setEditingId(null);
+  };
+
+  const handleInactivate = async (idTarjeta) => {
+    const card = cards.find((c) => c.idTarjeta === idTarjeta);
+
+    var newCard = {
+      ...card,
+      estado: "INACTIVO",
+    };
+
+    await inactivateCard(newCard);
+  };
+
+  if (isLoading) return <p>Cargando tarjetas...</p>;
+  if (!cards || cards.length === 0) return <p>No hay tarjetas disponibles.</p>;
+
+  // Activos primero, luego inactivos
+  const sorted = [...cards].sort((a, b) => {
+    if (a.estado === "ACTIVO" && b.estado !== "ACTIVO") return -1;
+    if (a.estado !== "ACTIVO" && b.estado === "ACTIVO") return 1;
+    return 0;
+  });
 
   return (
     <div className="view-cards-modal">
       <div className="cards-list">
-        {cards.map((c) => (
-          <div key={c.idTarjeta} className="card-item">
-            <p>
-              <strong>**** **** **** {c.numero.slice(-4)}</strong>
-            </p>
-            <p>Vence: {c.fechaVencimiento}</p>
-            <p>Franquicia: {c.franquicia}</p>
-            <p>Cupo Disponible: {c.cupoDisponible}</p>
+        {sorted.map((card) => (
+          <div
+            key={card.idTarjeta}
+            className={`card-item ${
+              card.estado !== "ACTIVO" ? "inactive" : ""
+            } `}
+          >
+            {editingId === card.idTarjeta ? (
+              <>
+                <input
+                  type="number"
+                  min={0}
+                  max={card.cupoTotal}
+                  value={newCupo}
+                  onChange={(e) => setNewCupo(e.target.value)}
+                />
+
+                <div className="edit-buttons">
+                  <button onClick={saveEdit}>Guardar</button>
+                  <button onClick={cancelEdit}>Cancelar</button>
+                </div>
+                {error && <p className="error">{error}</p>}
+              </>
+            ) : (
+              <>
+                <p>
+                  <strong>**** **** **** {card.numero.slice(-4)}</strong>
+                </p>
+                <p>
+                  <strong>Vence</strong>: {card.fechaVencimiento}
+                </p>
+                <p>
+                  <strong>Franquicia</strong>: {card.franquicia}
+                </p>
+                <p>
+                  <strong>Cupo Disponible</strong>: {card.cupoDisponible}
+                </p>
+                <p>
+                  <strong>Cupo Utilizado</strong>: {card.cupoUtilizado}
+                </p>
+
+                {card.estado === "INACTIVO" && (
+                  <p className="inactive-text">Tarjeta inactiva</p>
+                )}
+
+                {card.estado === "ACTIVO" && (
+                  <div className="card-button-container">
+                    <button
+                      onClick={() => startEdit(card)}
+                    >
+                      Modificar cupo
+                    </button>
+                    <button
+                      onClick={() => handleInactivate(card.idTarjeta)}
+                    >
+                      Inactivar
+                    </button>
+                  </div>
+                )}
+              </>
+            )}
           </div>
         ))}
       </div>

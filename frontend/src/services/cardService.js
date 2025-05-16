@@ -11,3 +11,28 @@ export const addCard = async (card) => {
 
   cards.push(card);
 };
+
+export const updateCard = async (newCard) => {
+  // TODO: Reemplazar por la solicitud real al API
+
+  const card = cards.find((c) => c.idTarjeta == newCard.idTarjeta);
+
+  if (!card) {
+    throw new Error("Tarjeta no encontrada");
+  }
+
+  card.cupoDisponible = newCard.cupoDisponible;
+  card.cupoUtilizado = card.cupoTotal - newCard.cupoDisponible;
+};
+
+export const inactivateCard = async (newCard) => {
+  // TODO: Reemplazar por la solicitud real al API
+
+  const card = cards.find((c) => c.idTarjeta == newCard.idTarjeta);
+
+  if (!card) {
+    throw new Error("Tarjeta no encontrada");
+  }
+
+  card.estado = newCard.estado;
+}

@@ -29,7 +29,7 @@ export const CreateCard = ({ user }) => {
         numero: form.numero,
         fechaVencimiento: form.fechaVencimiento,
         franquicia: calculateBrand(form.numero),
-        estado: "Activo",
+        estado: "ACTIVO",
         cupoTotal: parseFloat(form.cupoTotal),
         cupoDisponible: parseFloat(form.cupoTotal),
         cupoUtilizado: 0,
