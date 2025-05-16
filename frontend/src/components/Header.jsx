@@ -1,6 +1,6 @@
 import "../index.css";
 
-export default function Header() {
+export const Header = () => {
   return (
     <header className="header">
       <h1>Billetera Digital</h1>

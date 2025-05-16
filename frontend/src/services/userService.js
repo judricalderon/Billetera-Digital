@@ -1,9 +1,7 @@
 import users from "../data/users.json";
 
-export function getUsers() {
+export const getUsers = async () => {
   // TODO: Reemplazar por la solicitud real al API
 
-  return new Promise((resolve) => {
-    setTimeout(() => resolve(users), 500);
-  });
-}
+  return users;
+};

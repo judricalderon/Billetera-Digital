@@ -1,10 +1,10 @@
-import Header from "./components/Header";
-import Button from "./components/Button";
-import UserTable from "./components/UserTable";
-import Footer from "./components/Footer";
+import { Header } from "./components/Header";
+import { Button } from "./components/Button";
+import { UserTable } from "./components/UserTable";
+import { Footer } from "./components/Footer";
 import "./App.css";
 
-export default function App() {
+export const App = () => {
   return (
     <div className="app-container">
       <Header />
@@ -13,8 +13,8 @@ export default function App() {
         <Button />
         <UserTable />
       </main>
-      
+
       <Footer />
     </div>
   );
-}
+};

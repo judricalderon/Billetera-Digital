@@ -1,6 +1,6 @@
 import "../index.css";
 
-export default function Button() {
+export const Button = () => {
   return (
     <div style={{ textAlign: "right" }}>
       <button className="create-user-btn">Crear usuario</button>

@@ -1,37 +1,60 @@
-import { useEffect, useState } from "react";
-import { getUsers } from "../services/userService";
+import { useContext, useState } from 'react';
+import { CardModal } from "./CardModal";
+import { UserContext } from '../context/UserContext';
 import "../index.css";
 
-export default function UserTable() {
-  const [users, setUsers] = useState([]);
+export const UserTable = () => {
+  const { users } = useContext(UserContext);
+  const [selectedUser, setSelectedUser] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  useEffect(() => {
-    getUsers().then(setUsers);
-  }, []);
+  const openModal = (user) => {
+    setSelectedUser(user);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedUser(null);
+  };
 
   return (
-    <div className="table-container">
-      <table>
-        <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Identificación</th>
-            <th>Correo electrónico</th>
-            <th>Estado</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {users.map((u) => (
-            <tr key={u.idCliente}>
-              <td>{u.nombreCompleto}</td>
-              <td>{u.identificacion}</td>
-              <td>{u.correo}</td>
-              <td>{u.estado}</td>
+    <>
+      <div className="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Identificación</th>
+              <th>Correo electrónico</th>
+              <th>Estado</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+          </thead>
+
+          <tbody>
+            {users.map((u) => (
+              <tr
+                key={u.idCliente}
+                onClick={() => openModal(u)}
+                style={{ cursor: "pointer" }}
+              >
+                <td>{u.nombreCompleto}</td>
+                <td>{u.identificacion}</td>
+                <td>{u.correo}</td>
+                <td>{u.estado}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {selectedUser && (
+        <CardModal
+          isOpen={isModalOpen}
+          onRequestClose={closeModal}
+          user={selectedUser}
+        />
+      )}
+    </>
   );
-}
+};
