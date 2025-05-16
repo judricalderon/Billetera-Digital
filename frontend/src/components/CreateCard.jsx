@@ -1,10 +1,10 @@
 import { useContext, useState } from "react";
 import { CardContext } from "../context/CardContext";
-import { calculateBrand } from "../utils/CardUtils";
+import { calculateBrand, isExpiryValid } from "../utils/CardUtils";
 import "../index.css";
 
 export const CreateCard = ({ user }) => {
-  const { addCard } = useContext(CardContext);
+  const { cards, addCard } = useContext(CardContext);
 
   const [form, setForm] = useState({
     numero: "",
@@ -20,12 +20,33 @@ export const CreateCard = ({ user }) => {
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleCreating = () => {
+    setIsCreating(!isCreating);
+    setError(null);
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
+      if (!form.numero || !form.cupoTotal) {
+        throw new Error("Por favor, complete todos los campos.");
+      }
+
+      if (form.numero.length < 15) {
+        throw new Error("El número de tarjeta debe tener al menos 15 dígitos.");
+      }
+
+      if (form.cupoTotal <= 0) {
+        throw new Error("El cupo total debe ser mayor a 0.");
+      }
+
+      if (!isExpiryValid(form.fechaVencimiento)) {
+        throw new Error("La fecha de vencimiento no es válida.");
+      }
+
       var cardData = {
-        idTarjeta: 4,
+        idTarjeta: cards.length + 3,
         numero: form.numero,
         fechaVencimiento: form.fechaVencimiento,
         franquicia: calculateBrand(form.numero),
@@ -36,13 +57,15 @@ export const CreateCard = ({ user }) => {
         idCliente: user.idCliente,
       };
 
+      console.log(cardData)
+
       await addCard(cardData);
 
       setForm({ numero: "", fechaVencimiento: "", cupoTotal: "" });
+
+      setIsCreating(false);
     } catch (err) {
       setError(err.message);
-    } finally {
-      setIsCreating(false);
     }
   };
 
@@ -51,7 +74,7 @@ export const CreateCard = ({ user }) => {
       <div className="add-card-modal">
         <button
           className="create-card-btn"
-          onClick={() => setIsCreating(!isCreating)}
+          onClick={() => handleCreating()}
         >
           Agregar tarjeta
         </button>

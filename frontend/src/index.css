@@ -130,9 +130,10 @@ footer.footer {
 .modal {
   background: #fff;
   width: 60%;
-  height: 60%;
+  height: 70%;
   overflow-y: auto;
   border-radius: 8px;
+  box-shadow: 10px 4px 12px rgba(0, 0, 0, 0.591);
 }
 
 .modal-header {
@@ -247,20 +248,14 @@ footer.footer {
 
 .modal-body .card-item {
   flex: 1 1 45%;
-  background: #dbeaf9;
+  background: #e9f0f7;
   padding: 1rem;
   border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.2s ease;
 }
 
 .modal-body .inactive {
-  background: #c9c9c9;
+  background: #dedede;
   cursor: not-allowed;
-}
-
-.modal-body .card-item:hover {
-  opacity: 0.8;
 }
 
 .modal-body .card-button-container {
@@ -277,6 +272,11 @@ footer.footer {
   color: #727272;
   font-weight: bold;
   cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modal-body button:hover {
+  opacity: 0.8;
 }
 
 .modal-body .edit-buttons button {
@@ -305,8 +305,10 @@ footer.footer {
 }
 
 .modal-body .inactive-text {
-  color: #727272;
+  color: #5a5858;
   font-size: 0.9rem;
   margin-top: 1rem;
   text-align: center;
+  font-style: italic;
+  font-weight: 600;
 }

@@ -34,14 +34,14 @@ export const ViewCards = ({ isOpen, user }) => {
     const card = cards.find((c) => c.idTarjeta === editingId);
     const val = Number(newCupo);
 
-    if (isNaN(val) || val < 0 || val > card.cupoTotal) {
-      setError(`El cupo debe estar entre 0 y ${card.cupoTotal}`);
+    if (isNaN(val) || val < 0 ) {
+      setError(`El cupo debe ser mayor a 0`);
       return;
     }
 
     var newCard = {
       ...card,
-      cupoDisponible: val,
+      cupoTotal: val,
     };
 
     await updateCard(newCard);
@@ -84,7 +84,6 @@ export const ViewCards = ({ isOpen, user }) => {
                 <input
                   type="number"
                   min={0}
-                  max={card.cupoTotal}
                   value={newCupo}
                   onChange={(e) => setNewCupo(e.target.value)}
                 />
@@ -107,10 +106,13 @@ export const ViewCards = ({ isOpen, user }) => {
                   <strong>Franquicia</strong>: {card.franquicia}
                 </p>
                 <p>
-                  <strong>Cupo Disponible</strong>: {card.cupoDisponible}
+                  <strong>Cupo Total</strong>: ${card.cupoTotal}
                 </p>
                 <p>
-                  <strong>Cupo Utilizado</strong>: {card.cupoUtilizado}
+                  <strong>Cupo Disponible</strong>: ${card.cupoDisponible}
+                </p>
+                <p>
+                  <strong>Cupo Utilizado</strong>: ${card.cupoUtilizado}
                 </p>
 
                 {card.estado === "Inactivo" && (

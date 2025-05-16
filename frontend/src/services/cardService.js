@@ -21,8 +21,8 @@ export const updateCard = async (newCard) => {
     throw new Error("Tarjeta no encontrada");
   }
 
-  card.cupoDisponible = newCard.cupoDisponible;
-  card.cupoUtilizado = card.cupoTotal - newCard.cupoDisponible;
+  card.cupoTotal = newCard.cupoTotal;
+  card.cupoDisponible = newCard.cupoTotal;
 };
 
 export const inactivateCard = async (newCard) => {
