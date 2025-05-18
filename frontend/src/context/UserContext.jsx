@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState } from "react";
 import { getUsers } from "../services/userService";
 
 // Context y Provider
@@ -7,12 +7,20 @@ export const UserContext = createContext();
 export const UserProvider = ({ children }) => {
   const [users, setUsers] = useState([]);
 
-  useEffect(() => {
-    getUsers().then(setUsers);
-  }, []);
+  const loadUsers = async () => {
+    setUsers([]);
+
+    const list = await getUsers();
+    setUsers(list);
+  };
+
+  const addUser = async (userData) => {
+    await createUser(userData);
+    loadUsers();
+  };
 
   return (
-    <UserContext.Provider value={{ users, setUsers }}>
+    <UserContext.Provider value={{ users, setUsers, loadUsers }}>
       {children}
     </UserContext.Provider>
   );

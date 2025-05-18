@@ -1,5 +1,7 @@
 import cards from "../data/cards.json";
 
+const API_URL = 'http://localhost:8080/api';
+
 export const getCardsByClient = async (idCliente) => {
   const res = await fetch(`${API_URL}/users/${idCliente}/cards`);
 

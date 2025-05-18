@@ -1,12 +1,16 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from "react";
 import { CardModal } from "./CardModal";
-import { UserContext } from '../context/UserContext';
+import { UserContext } from "../context/UserContext";
 import "../index.css";
 
 export const UserTable = () => {
-  const { users } = useContext(UserContext);
+  const { users, loadUsers } = useContext(UserContext);
   const [selectedUser, setSelectedUser] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    loadUsers();
+  }, []);
 
   const openModal = (user) => {
     setSelectedUser(user);
