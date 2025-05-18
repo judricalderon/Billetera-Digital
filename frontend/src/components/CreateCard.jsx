@@ -55,8 +55,6 @@ export const CreateCard = ({ user }) => {
         idCliente: user.idCliente,
       };
 
-      console.log(cardData)
-
       await addCard(cardData);
 
       setForm({ numero: "", fechaVencimiento: "", cupoTotal: "" });
