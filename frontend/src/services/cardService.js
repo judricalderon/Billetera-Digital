@@ -1,9 +1,16 @@
 import cards from "../data/cards.json";
 
 export const getCardsByClient = async (idCliente) => {
-  // TODO: Reemplazar por la solicitud real al API
+  const res = await fetch(`${API_URL}/users/${userId}/cards`);
 
-  return cards.filter((c) => c.idCliente == idCliente);
+  if (!res.ok)
+  {
+    throw new Error(`Error al obtener tarjetas de usuario ${userId}`);
+  }
+  
+  return await res.json();
+
+  // return cards.filter((c) => c.idCliente == idCliente);
 };
 
 export const addCard = async (card) => {
@@ -35,4 +42,4 @@ export const inactivateCard = async (newCard) => {
   }
 
   card.estado = newCard.estado;
-}
+};
