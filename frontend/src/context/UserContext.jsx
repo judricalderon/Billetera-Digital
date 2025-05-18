@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { getUsers } from "../services/userService";
+import { getUsers, createUser } from "../services/userService";
 
 // Context y Provider
 export const UserContext = createContext();
@@ -20,7 +20,7 @@ export const UserProvider = ({ children }) => {
   };
 
   return (
-    <UserContext.Provider value={{ users, setUsers, loadUsers }}>
+    <UserContext.Provider value={{ users, setUsers, loadUsers, addUser }}>
       {children}
     </UserContext.Provider>
   );

@@ -14,5 +14,4 @@ public class UserDTO {
     private String nombreCompleto;
     private String correo;
     private String estado;
-    private LocalDateTime fechaRegistro;
 }

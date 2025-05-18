@@ -54,53 +54,66 @@ export const CreateUserModal = ({ isOpen, onRequestClose }) => {
       className="modal"
       overlayClassName="overlay"
     >
-      <h2>Crear Usuario</h2>
+      <div className="modal-header">
+        <h2>Crear Usuario</h2>
+      </div>
 
-      {error && <p className="error">{error}</p>}
+      <div className="modal-body">
+        {error && <p className="error">{error}</p>}
 
-      <form onSubmit={handleSubmit} className="card-form">
-        <input
-          name="nombreCompleto"
-          placeholder="Nombre completo"
-          value={form.nombreCompleto}
-          onChange={handleChange}
-          required
-        />
+        <form onSubmit={handleSubmit} className="card-form">
+          <div className="form-group">
+            <label htmlFor="nombreCompleto">Nombre completo</label>
 
-        <input
-          name="identificacion"
-          placeholder="Identificación"
-          value={form.identificacion}
-          onChange={handleChange}
-          required
-        />
+            <input
+              name="nombreCompleto"
+              placeholder="Nombre completo"
+              value={form.nombreCompleto}
+              onChange={handleChange}
+              required
+            />
+          </div>
 
-        <input
-          name="correo"
-          type="email"
-          placeholder="Correo electrónico"
-          value={form.correo}
-          onChange={handleChange}
-          required
-        />
+          <div className="form-group">
+            <label htmlFor="identificacion">Identificación</label>
 
-        <select name="estado" value={form.estado} onChange={handleChange}>
-          <option value="Activo">Activo</option>
-          <option value="Inactivo">Inactivo</option>
-        </select>
+            <input
+              name="identificacion"
+              placeholder="Identificación"
+              value={form.identificacion}
+              onChange={handleChange}
+              required
+            />
+          </div>
 
-        <button type="submit" className="create-user-btn">
-          Guardar
-        </button>
+          <div className="form-group">
+            <label htmlFor="correo">Correo electrónico</label>
 
-        <button
-          type="button"
-          onClick={onRequestClose}
-          className="create-user-btn"
-        >
-          Cancelar
-        </button>
-      </form>
+            <input
+              name="correo"
+              type="email"
+              placeholder="Correo electrónico"
+              value={form.correo}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="buttons-container">
+            <button type="submit" className="success-user-btn">
+              Guardar
+            </button>
+
+            <button
+              type="button"
+              onClick={onRequestClose}
+              className="cancel-user-btn"
+            >
+              Cancelar
+            </button>
+          </div>
+        </form>
+      </div>
     </Modal>
   );
 };

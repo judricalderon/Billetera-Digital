@@ -1,12 +1,17 @@
 import { useContext, useState, useEffect } from "react";
-import { CardModal } from "./CardModal";
+import Modal from "react-modal";
 import { UserContext } from "../context/UserContext";
+import { CardModal } from "./CardModal";
+import { CreateUserModal } from "./CreateUserModal";
 import "../index.css";
+
+Modal.setAppElement("#root");
 
 export const UserTable = () => {
   const { users, loadUsers } = useContext(UserContext);
   const [selectedUser, setSelectedUser] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
 
   useEffect(() => {
     loadUsers();
@@ -22,10 +27,15 @@ export const UserTable = () => {
     setSelectedUser(null);
   };
 
+  const openCreateModal = () => setIsCreateModalOpen(true);
+  const closeCreateModal = () => setIsCreateModalOpen(false);
+
   return (
     <>
       <div style={{ textAlign: "right" }}>
-        <button className="create-user-btn">Crear usuario</button>
+        <button className="create-user-btn" onClick={openCreateModal}>
+          Crear usuario
+        </button>
       </div>
 
       <div className="table-container">
@@ -55,6 +65,11 @@ export const UserTable = () => {
           </tbody>
         </table>
       </div>
+
+      <CreateUserModal
+        isOpen={isCreateModalOpen}
+        onRequestClose={closeCreateModal}
+      />
 
       {selectedUser && (
         <CardModal

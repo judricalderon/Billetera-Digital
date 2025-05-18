@@ -266,7 +266,7 @@ footer.footer {
   padding: 5px 10px;
   margin-right: 1rem;
   border-radius: 4px;
-  font-size: .9rem;
+  font-size: 0.9rem;
   background-color: #efeeec;
   border: 2px solid #727272;
   color: #727272;
@@ -283,7 +283,7 @@ footer.footer {
   padding: 5px 10px;
   margin-right: 1rem;
   border-radius: 4px;
-  font-size: .9rem;
+  font-size: 0.9rem;
   background-color: #cfe1f8;
   border: 2px solid #2c72c3;
   color: #2c72c3;
@@ -300,7 +300,7 @@ footer.footer {
   opacity: 0.8;
 }
 
-.modal-body .cards-list input { 
+.modal-body .cards-list input {
   width: 100% !important;
 }
 
@@ -311,4 +311,38 @@ footer.footer {
   text-align: center;
   font-style: italic;
   font-weight: 600;
+}
+
+/* Formulario de usuarios */
+
+.form-group {
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.success-user-btn {
+  background-color: #e0f6e1 !important;
+  border: 2px solid #4caf50 !important;
+  color: #4caf50 !important;
+  font-weight: bold !important;
+}
+
+.cancel-user-btn {
+  background-color: #efeeec !important;
+  border: 2px solid #727272 !important;
+  color: #727272 !important;
+  font-weight: bold !important;
 }

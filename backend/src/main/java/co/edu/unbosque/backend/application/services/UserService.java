@@ -7,6 +7,7 @@ import co.edu.unbosque.backend.domain.model.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,8 +25,7 @@ public class UserService implements IUserService {
                 e.getIdentificacion(),
                 e.getNombreCompleto(),
                 e.getCorreo(),
-                e.getEstado(),
-                e.getFechaRegistro()
+                e.getEstado()
         );
     }
 
@@ -36,7 +36,7 @@ public class UserService implements IUserService {
         e.setNombreCompleto(d.getNombreCompleto());
         e.setCorreo(d.getCorreo());
         e.setEstado(d.getEstado());
-        e.setFechaRegistro(d.getFechaRegistro());
+        e.setFechaRegistro(LocalDateTime.now());
         return e;
     }
 
