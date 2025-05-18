@@ -24,8 +24,10 @@ export const addCard = async (card) => {
   {
     throw new Error('Error al agregar tarjeta');
   }
-  
+
   return await res.json();
+
+  // cards.push(card);
 };
 
 export const updateCard = async (newCard) => {
