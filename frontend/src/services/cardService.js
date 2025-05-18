@@ -1,15 +1,31 @@
 import cards from "../data/cards.json";
 
 export const getCardsByClient = async (idCliente) => {
-  // TODO: Reemplazar por la solicitud real al API
+  const res = await fetch(`${API_URL}/users/${idCliente}/cards`);
 
-  return cards.filter((c) => c.idCliente == idCliente);
+  if (!res.ok)
+  {
+    throw new Error(`Error al obtener tarjetas de usuario ${idCliente}`);
+  }
+
+  return await res.json();
+
+  // return cards.filter((c) => c.idCliente == idCliente);
 };
 
 export const addCard = async (card) => {
-  // TODO: Reemplazar por la solicitud real al API
+  const res = await fetch(`${API_URL}/users/${card.idCliente}/cards`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(card)
+  });
 
-  cards.push(card);
+  if (!res.ok)
+  {
+    throw new Error('Error al agregar tarjeta');
+  }
+  
+  return await res.json();
 };
 
 export const updateCard = async (newCard) => {
@@ -35,4 +51,4 @@ export const inactivateCard = async (newCard) => {
   }
 
   card.estado = newCard.estado;
-}
+};
