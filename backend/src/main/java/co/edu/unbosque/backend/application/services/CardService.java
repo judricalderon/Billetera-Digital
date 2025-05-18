@@ -3,7 +3,9 @@ package co.edu.unbosque.backend.application.services;
 import co.edu.unbosque.backend.application.dtos.CardDTO;
 import co.edu.unbosque.backend.application.interfaces.ICardService;
 import co.edu.unbosque.backend.domain.interfaces.ICardRepository;
+import co.edu.unbosque.backend.domain.interfaces.IUserRepository;
 import co.edu.unbosque.backend.domain.model.Card;
+import co.edu.unbosque.backend.domain.model.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,9 +16,13 @@ import java.util.stream.Collectors;
 @Service
 public class CardService implements ICardService {
     private final ICardRepository repository;
+    private final IUserRepository userRepository;
 
-    public CardService(ICardRepository repository) {
+    public CardService(
+            ICardRepository repository,
+            IUserRepository userRepository) {
         this.repository = repository;
+        this.userRepository = userRepository;
     }
 
     private CardDTO toDTO(Card e) {
@@ -43,7 +49,6 @@ public class CardService implements ICardService {
         e.setCupoTotal(d.getCupoTotal());
         e.setCupoDisponible(d.getCupoDisponible());
         e.setCupoUtilizado(d.getCupoUtilizado());
-        // UserEntity debe asignarse externamente en el adapter o controlador
         return e;
     }
 
@@ -58,8 +63,12 @@ public class CardService implements ICardService {
     @Override
     @Transactional
     public CardDTO addCard(CardDTO cardDTO) {
+        User user = userRepository.findById(cardDTO.getIdCliente())
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+
         Card e = toEntity(cardDTO);
         e.setEstado("Activo");
+        e.setUser(user);
         Card saved = repository.save(e);
         return toDTO(saved);
     }

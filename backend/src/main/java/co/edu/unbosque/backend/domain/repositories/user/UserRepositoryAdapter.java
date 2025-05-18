@@ -5,6 +5,7 @@ import co.edu.unbosque.backend.domain.model.User;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class UserRepositoryAdapter implements IUserRepository {
@@ -12,6 +13,11 @@ public class UserRepositoryAdapter implements IUserRepository {
 
     public UserRepositoryAdapter(SpringDataUserRepository jpa) {
         this.jpa = jpa;
+    }
+
+    @Override
+    public Optional<User> findById(Long idCliente) {
+        return jpa.findById(idCliente);
     }
 
     @Override

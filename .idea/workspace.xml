@@ -6,12 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="8e004906-ea9e-4729-9827-d3eac62c4de8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/co/edu/unbosque/backend/application/dtos/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/co/edu/unbosque/backend/application/dtos/UserDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/co/edu/unbosque/backend/application/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/co/edu/unbosque/backend/application/services/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/CreateUserModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/CreateUserModal.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/UserTable.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/UserTable.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/context/UserContext.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/context/UserContext.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/co/edu/unbosque/backend/application/services/CardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/co/edu/unbosque/backend/application/services/CardService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/co/edu/unbosque/backend/domain/interfaces/IUserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/co/edu/unbosque/backend/domain/interfaces/IUserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/co/edu/unbosque/backend/domain/repositories/user/UserRepositoryAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/co/edu/unbosque/backend/domain/repositories/user/UserRepositoryAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/CreateCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/CreateCard.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

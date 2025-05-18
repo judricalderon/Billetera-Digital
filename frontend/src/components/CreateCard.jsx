@@ -46,11 +46,9 @@ export const CreateCard = ({ user }) => {
       }
 
       var cardData = {
-        idTarjeta: cards.length + 3,
         numero: form.numero,
         fechaVencimiento: form.fechaVencimiento,
         franquicia: calculateBrand(form.numero),
-        estado: "Activo",
         cupoTotal: parseFloat(form.cupoTotal),
         cupoDisponible: parseFloat(form.cupoTotal),
         cupoUtilizado: 0,
