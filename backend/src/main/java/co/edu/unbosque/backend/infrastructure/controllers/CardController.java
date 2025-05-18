@@ -3,13 +3,13 @@ package co.edu.unbosque.backend.infrastructure.controllers;
 import co.edu.unbosque.backend.application.dtos.CardDTO;
 import co.edu.unbosque.backend.application.interfaces.ICardService;
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-@Controller
+@CrossOrigin(origins = "http://localhost:5173")
+@RestController
 @RequestMapping("/api")
 public class CardController {
     private final ICardService cardService;
