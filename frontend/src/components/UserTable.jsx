@@ -24,6 +24,10 @@ export const UserTable = () => {
 
   return (
     <>
+      <div style={{ textAlign: "right" }}>
+        <button className="create-user-btn">Crear usuario</button>
+      </div>
+
       <div className="table-container">
         <table>
           <thead>

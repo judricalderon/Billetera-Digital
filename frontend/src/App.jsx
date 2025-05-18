@@ -1,5 +1,4 @@
 import { Header } from "./components/Header";
-import { Button } from "./components/Button";
 import { UserTable } from "./components/UserTable";
 import { Footer } from "./components/Footer";
 import "./App.css";
@@ -10,7 +9,6 @@ export const App = () => {
       <Header />
 
       <main className="main">
-        <Button />
         <UserTable />
       </main>
 

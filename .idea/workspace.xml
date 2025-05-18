@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8e004906-ea9e-4729-9827-d3eac62c4de8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/co/edu/unbosque/backend/application/interfaces/IUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/co/edu/unbosque/backend/application/interfaces/IUserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/co/edu/unbosque/backend/application/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/co/edu/unbosque/backend/application/services/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/co/edu/unbosque/backend/domain/interfaces/IUserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/co/edu/unbosque/backend/domain/interfaces/IUserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/co/edu/unbosque/backend/domain/repositories/user/UserRepositoryAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/co/edu/unbosque/backend/domain/repositories/user/UserRepositoryAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/co/edu/unbosque/backend/infrastructure/controllers/CardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/co/edu/unbosque/backend/infrastructure/controllers/CardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/co/edu/unbosque/backend/infrastructure/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/co/edu/unbosque/backend/infrastructure/controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Button.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/UserTable.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/UserTable.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +65,7 @@
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "Spring Boot.BackendApplication.executor": "Debug",
+    "Spring Boot.BackendApplication.executor": "Run",
     "git-widget-placeholder": "ISW1DSAQ-7-gestion-de-clientes-visualizar-clientes-registrados",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
